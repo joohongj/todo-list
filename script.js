@@ -32,9 +32,20 @@ const clearAllButton = document.getElementById('clear');
 // 3. Write a function to display all items in the #list element
 function updateList() {
     // add your code here
-    const list = document.getElementById('list');
+       list.innerHTML = "";
 
-    const listItems = list.getElementByID(li);
+     todoItems.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+
+        // Optional: remove item when clicked
+        li.addEventListener("click", () => {
+            todoItems.splice(index, 1);
+            updateList();
+        });
+
+        list.appendChild(li);
+    });
 }
 
 updateList();
@@ -42,9 +53,9 @@ updateList();
 
 
 // 4. Handle adding a new item when the form is submitted
-addItemButton.addEventListener('click', function () {
+addItemButton.addEventListener('click', function (event) {
+
     // add your code here
-    
 });
 
 
@@ -53,6 +64,9 @@ addItemButton.addEventListener('click', function () {
 // 5. Sort items alphabetically when sortBtn is clicked
 sortBtn.addEventListener("click", () => {
     // add your code here
+    const name_AZ = (a, b) =>(a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+    
+
 });
 
 
